@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Provão Paulista 1ª série</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen">
+
+    <!-- TELA INICIAL -->
+    <div id="tela-inicial" class="flex flex-col items-center justify-center min-h-screen p-4">
+        <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
+            <h1 class="text-2xl font-bold text-blue-600 mb-4">Física Provão Paulista 1ª série</h1>
+            <p class="mb-6 text-sm text-black-600">
+                ORIENTAÇÕES PARA A REALIZAÇÃO DO SIMULADO
+
+O simulado poderá ser realizado com consulta aos materiais de estudo. Entretanto, cada questão deverá ser respondida e justificada individualmente em uma folha separada, contendo a numeração da questão e a respectiva justificativa da resposta ou os cálculos realizados para chegar ao resultado.
+
+A folha com todas as justificativas e os cálculos deverá ser entregue ao professor ao final da avaliação, juntamente com o simulado.
+
+Atenção: Não basta indicar apenas a alternativa correta. É obrigatório apresentar a justificativa ou os cálculos correspondentes a cada questão.</strong>.
+            </p>
+            
+            <div class="text-left mb-4">
+                <label class="block text-sm font-bold mb-1 text-gray-700">Nome Completo</label>
+                <input type="text" id="nome-inicial" class="w-full border border-gray-300 rounded p-2 focus:ring focus:ring-blue-200" placeholder="Digite seu nome completo">
+            </div>
+            
+            <div class="text-left mb-4">
+                <label class="block text-sm font-bold mb-1 text-gray-700">Série / Turma</label>
+                <input type="text" id="turma-inicial" class="w-full border border-gray-300 rounded p-2 focus:ring focus:ring-blue-200" placeholder="Ex: 1A">
+            </div>
+
+            <div class="text-left mb-6">
+                <label class="block text-sm font-bold mb-1 text-gray-700">RA do Estudante (13 dígitos)</label>
+                <input type="text" id="ra-inicial" maxlength="13" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="w-full border border-gray-300 rounded p-2 focus:ring focus:ring-blue-200" placeholder="Ex: 0000000000000">
+            </div>
+
+            <button onclick="iniciarProva()" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 font-bold w-full transition-colors">
+                Iniciar Prova
+            </button>
+        </div>
+    </div>
+
+    <!-- TELA DA PROVA -->
+    <div id="tela-prova" style="display: none;" class="max-w-3xl mx-auto py-8 px-4">
+        
+        <div class="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center bg-white p-4 rounded shadow mb-6 sticky top-0 z-10 border-t-4 border-blue-600 gap-4">
+            <div>
+                <h2 class="font-bold text-lg">Simulado 1ª série <strong>DIA 1</strong></h2>
+                <p class="text-xs sm:text-sm text-gray-600">
+                    Aluno: <span id="display-nome" class="font-semibold"></span> | 
+                    Série: <span id="display-turma" class="font-semibold"></span> | 
+                    RA: <span id="display-ra" class="font-semibold"></span>
+                </p>
+            </div>
+        </div>
+
+        <form id="form-prova" class="space-y-6">
+            <!-- Campos Ocultos para enviar os dados do aluno junto com o form -->
+            <input type="hidden" name="nome" id="nome-hidden">
+            <input type="hidden" name="turma" id="turma-hidden">
+            <input type="hidden" name="ra" id="ra-hidden">
+
+           
+            
+            <div class="bg-purple-400 p-4 rounded border-l-4 border-purple-600 mb-6">
+                <h2 class="font-bold text-xl">Questões de Física</h2>
+            </div>
+
+            <!-- QUESTÃO 25 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">Leia o texto para responder à questão 25.</h3>
+                <img src="1_25_1ANO.PNG.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q25" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q25" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q25" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q25" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q25" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 26 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">Leia o texto para responder à questão 26.</h3>
+                <img src="1_26_1ANO.PNG.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q26" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q26" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q26" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q26" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q26" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 27 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">Leia o texto para responder à questão 27.</h3>
+                <img src="1_27_1ANO.PNG.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q27" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q27" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q27" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q27" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q27" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 28 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">Leia o texto para responder à questão 28.</h3>
+                <img src="1_28_1ANO.PNG.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q28" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q28" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q28" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q28" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q28" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>   
+
+            <!-- QUESTÃO 29 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">Leia o texto para responder à questão 29.</h3>
+                <img src="1_29_1ANO.PNG.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q29" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q29" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q29" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q29" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q29" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>  
+
+            <!-- QUESTÃO 30 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">Leia o texto para responder à questão 30.</h3>
+                <img src="1_30_1ANO.PNG.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <img src="1_30.11_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES de imagens -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <!-- Opção A -->
+                    <label class="cursor-pointer relative inline-block">
+                        <input type="radio" name="q30" value="a" required class="peer hidden">
+                        <img src="1_30.2_1ANO.PNG" alt="Alternativa A" class="w-50 h-50 object-contain bg-white rounded-lg border-4 border-transparent hover:opacity-80 transition-all peer-checked:border-blue-500 peer-checked:shadow-lg">
+                        <span class="absolute top-2 left-2 bg-white text-gray-800 font-bold text-sm w-7 h-7 flex items-center justify-center rounded-full shadow-md peer-checked:bg-blue-500 peer-checked:text-white transition-colors pointer-events-none">A</span>
+                    </label>
+
+                    <!-- Opção B -->
+                    <label class="cursor-pointer relative inline-block">
+                        <input type="radio" name="q30" value="b" class="peer hidden">
+                        <img src="1_30.3_1ANO.PNG" alt="Alternativa B" class="w-50 h-50 object-contain bg-white rounded-lg border-4 border-transparent hover:opacity-80 transition-all peer-checked:border-blue-500 peer-checked:shadow-lg">
+                        <span class="absolute top-2 left-2 bg-white text-gray-800 font-bold text-sm w-7 h-7 flex items-center justify-center rounded-full shadow-md peer-checked:bg-blue-500 peer-checked:text-white transition-colors pointer-events-none">B</span>
+                    </label>
+
+                    <!-- Opção C -->
+                    <label class="cursor-pointer relative inline-block">
+                        <input type="radio" name="q30" value="c" class="peer hidden">
+                        <img src="1_30.4_1ANO.PNG" alt="Alternativa C" class="w-50 h-50 object-contain bg-white rounded-lg border-4 border-transparent hover:opacity-80 transition-all peer-checked:border-blue-500 peer-checked:shadow-lg">
+                        <span class="absolute top-2 left-2 bg-white text-gray-800 font-bold text-sm w-7 h-7 flex items-center justify-center rounded-full shadow-md peer-checked:bg-blue-500 peer-checked:text-white transition-colors pointer-events-none">C</span>
+                    </label>
+
+                    <!-- Opção D -->
+                    <label class="cursor-pointer relative inline-block">
+                        <input type="radio" name="q30" value="d" class="peer hidden">
+                        <img src="1_30.5_1ANO.PNG" alt="Alternativa D" class="w-50 h-50 object-contain bg-white rounded-lg border-4 border-transparent hover:opacity-80 transition-all peer-checked:border-blue-500 peer-checked:shadow-lg">
+                        <span class="absolute top-2 left-2 bg-white text-gray-800 font-bold text-sm w-7 h-7 flex items-center justify-center rounded-full shadow-md peer-checked:bg-blue-500 peer-checked:text-white transition-colors pointer-events-none">D</span>
+                    </label>
+
+                    <!-- Opção E -->
+                    <label class="cursor-pointer relative inline-block">
+                        <input type="radio" name="q30" value="e" class="peer hidden">
+                        <img src="1_30.6_1ANO.PNG" alt="Alternativa E" class="w-50 h-50 object-contain bg-white rounded-lg border-4 border-transparent hover:opacity-80 transition-all peer-checked:border-blue-500 peer-checked:shadow-lg">
+                        <span class="absolute top-2 left-2 bg-white text-gray-800 font-bold text-sm w-7 h-7 flex items-center justify-center rounded-full shadow-md peer-checked:bg-blue-500 peer-checked:text-white transition-colors pointer-events-none">E</span>
+                    </label>
+                </div>
+            </div>  
+
+            <!-- QUESTÃO 31 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">31.</h3>
+                <img src="1_31_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q31" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q31" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q31" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q31" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q31" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>  
+
+            <!-- QUESTÃO 32 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">32.</h3>
+                <img src="1_32_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q32" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q32" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q32" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q32" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q32" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>  
+
+            <div class="bg-pink-300 p-4 rounded border-l-4 border-pink-600 mb-6">
+                <h2 class="font-bold text-xl">Questões de Química</h2>
+            </div>
+
+            <!-- QUESTÃO 33 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">33.</h3>
+                <img src="1_33_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q33" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q33" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q33" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q33" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q33" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>  
+
+            <!-- QUESTÃO 34 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">34.</h3>
+                <img src="1_34_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q34" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q34" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q34" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q34" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q34" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 35 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">35.</h3>
+                <img src="1_35_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q35" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q35" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q35" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q35" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q35" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+            
+            <!-- QUESTÃO 36 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">36.</h3>
+                <img src="1_36_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q36" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q36" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q36" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q36" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q36" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 37 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">37.</h3>
+                <img src="1_37_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q37" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q37" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q37" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q37" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q37" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 38 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">Leia o texto para responder à questão 38.</h3>
+                <img src="1_38_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <p class="font-bold mb-3 mt-6">38. De acordo com a imagem abaixo, selecione a alternativa correta:</p>
+                <img src="1_38.1_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q38" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q38" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q38" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q38" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q38" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 39 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">39.</h3>
+                <img src="1_39_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q39" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q39" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q39" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q39" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q39" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 40 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">40.</h3>
+                <img src="1_40_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q40" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q40" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q40" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q40" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q40" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <div class="bg-green-300 p-4 rounded border-l-4 border-green-600 mb-6">
+                <h2 class="font-bold text-xl">Questões de Biologia</h2>
+            </div>
+        
+            <!-- QUESTÃO 41 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">41.</h3>
+                <img src="1_41_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q41" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q41" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q41" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q41" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q41" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 42 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">42.</h3>
+                <img src="1_42_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q42" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q42" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q42" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q42" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q42" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 43 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">43.</h3>
+                <img src="1_43_1ANO.jpg" alt="TEXTO1" class="w-5/5 max-w-full h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q43" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q43" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q43" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q43" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q43" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 44 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">44.</h3>
+                <img src="1_44_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q44" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q44" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q44" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q44" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q44" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 45 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">45.</h3>
+                <img src="1_45_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q45" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q45" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q45" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q45" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q45" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 46 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">46.</h3>
+                <img src="1_46_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q46" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q46" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q46" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q46" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q46" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 47 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">47.</h3>
+                <img src="1_47_1ANO.jpg" alt="TEXTO1" class="w-5/5 max-w-full h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q47" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q47" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q47" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q47" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q47" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+
+            <!-- QUESTÃO 48 -->
+            <div class="bg-white p-6 rounded shadow">
+                <h3 class="font-bold text-lg mb-2 text-blue-700">48.</h3>
+                <img src="1_48_1ANO.jpg" alt="TEXTO1" class="w-4/5 max-w-md h-auto mx-auto my-4 rounded shadow border">
+                <!-- OPÇÕES NA MESMA LINHA -->
+                <div class="flex flex-row flex-wrap justify-center gap-6 mt-4">
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q48" value="a" required class="mr-2"> (A)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q48" value="b" class="mr-2"> (B)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q48" value="c" class="mr-2"> (C)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q48" value="d" class="mr-2"> (D)</label>
+                    <label class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"><input type="radio" name="q48" value="e" class="mr-2"> (E)</label>
+                </div>
+            </div>
+        
+            <button type="submit" class="bg-green-600 text-white px-6 py-4 rounded hover:bg-green-700 font-bold w-full text-lg shadow-lg transition-colors mt-8">
+                Finalizar e Enviar Prova
+            </button>
+        </form>
+    </div>
+
+    <!-- TELA DE RESULTADO / ANULAÇÃO -->
+    <div id="tela-resultado" style="display: none;" class="flex-col items-center justify-center min-h-screen text-center p-4"></div>
+
+    <script>
+        // ===== LINK DO GOOGLE SHEETS =====
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyknXbeXF9comwbd8EaE5y90OXokXelmD1oyOStBlWdvxX9QxZEqt7gxENO7VP7YXQQ/exec';
+
+        // --- VARIÁVEIS DE CONTROLE ---
+        let provaIniciada = false;
+
+        // --- GABARITO ---
+        const gabarito = {
+            q1: 'd', q2: 'c', q3: 'e', q4: 'b', q5: 'd', q6: 'a', q7: 'a', q8: 'c', q9: 'd',
+            q10: 'c', q11: 'e', q12: 'a', q13: 'e', q14: 'c', q15: 'a', q16: 'b', q17: 'd', q18: 'a',
+            q19: 'c', q20: 'b', q21: 'c', q22: 'a', q23: 'a', q24: 'e',
+            q25: 'a', q26: 'c', q27: 'a', q28: 'e', q29: 'e', q30: 'c', q31: 'e', q32: 'b',
+            q33: 'a', q34: 'a', q35: 'e', q36: 'b', q37: 'c', q38: 'a', q39: 'b', q40: 'a',
+            q41: 'a', q42: 'e', q43: 'a', q44: 'e', q45: 'd', q46: 'b', q47: 'e', q48: 'd'
+        };
+
+        // --- FUNÇÃO PARA FORÇAR O TOPO DA TELA ---
+        function irParaTopo() {
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }, 50);
+        }
+
+        // --- INICIAR PROVA ---
+        function iniciarProva() {
+            const nomeInput = document.getElementById('nome-inicial').value.trim();
+            const turmaInput = document.getElementById('turma-inicial').value.trim();
+            const raInput = document.getElementById('ra-inicial').value.trim();
+
+            if (nomeInput === "" || turmaInput === "" || raInput === "") {
+                alert("⚠️ Por favor, preencha todos os campos: Nome, Série e RA.");
+                return; 
+            }
+
+            if (raInput.length !== 13) {
+                alert("⚠️ O RA deve conter exatamente 13 números.");
+                return;
+            }
+
+            document.getElementById('nome-hidden').value = nomeInput;
+            document.getElementById('turma-hidden').value = turmaInput;
+            document.getElementById('ra-hidden').value = raInput;
+            
+            document.getElementById('display-nome').innerText = nomeInput;
+            document.getElementById('display-turma').innerText = turmaInput;
+            document.getElementById('display-ra').innerText = raInput;
+
+            // Transição de tela simples, sem forçar tela cheia
+            document.getElementById('tela-inicial').style.display = 'none';
+            document.getElementById('tela-prova').style.display = 'block';
+            provaIniciada = true;
+        }
+
+       // --- ENVIO NORMAL DA PROVA ---
+        document.getElementById('form-prova').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            if (!provaIniciada) return;
+
+            const form = document.getElementById('form-prova');
+            const dados = new FormData(form);
+            let nota = 0;
+
+            const dadosParaEnviar = new URLSearchParams();
+            
+            // 1. Adiciona os dados do aluno
+            dadosParaEnviar.append('nome', dados.get('nome') || 'Desconhecido');
+            dadosParaEnviar.append('turma', dados.get('turma') || 'Desconhecida');
+            dadosParaEnviar.append('ra', dados.get('ra') || '000');
+            dadosParaEnviar.append('infracoes', 0);
+
+            // 2. Varre TODO o gabarito (da q1 até a q48)
+            for (let [questao, respostaCerta] of Object.entries(gabarito)) {
+                let respostaAluno = dados.get(questao); // Pega a marcação (fica null se estiver vazio)
+                
+                if (respostaAluno) {
+                    // Se o aluno marcou algo, confere se está certo ou errado
+                    if (respostaAluno === respostaCerta) {
+                        nota++;
+                        dadosParaEnviar.append(questao, `${respostaAluno.toUpperCase()} (Certa)`);
+                    } else {
+                        dadosParaEnviar.append(questao, `${respostaAluno.toUpperCase()} (Errada)`);
+                    }
+                } else {
+                    // Se o aluno não marcou ou a questão não existe na tela (ex: q1 a q24)
+                    dadosParaEnviar.append(questao, "Em Branco");
+                }
+            }
+            
+            // 3. Adiciona a nota final
+            dadosParaEnviar.append('nota', nota);
+
+            // Transição de tela
+            document.getElementById('tela-prova').style.display = 'none';
+            const telaResultado = document.getElementById('tela-resultado');
+            telaResultado.style.display = 'flex';
+            irParaTopo(); 
+            
+            telaResultado.innerHTML = `
+                <div class="animate-pulse my-auto">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-2">Corrigindo e Enviando prova...</h2>
+                    <p class="text-gray-600">Por favor, não feche a janela.</p>
+                </div>
+            `;
+
+            // 4. Envia pacote completo para o Google Sheets
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: dadosParaEnviar })
+                .then(() => {
+                    provaIniciada = false; 
+                    telaResultado.innerHTML = `
+                        <div class="bg-green-100 p-8 rounded-lg border-2 border-green-500 shadow-lg max-w-md w-full my-auto">
+                            <h1 class="text-3xl font-bold text-green-700 mb-4">Prova Entregue!</h1>
+                            <p class="text-xl mb-2 font-semibold">${dados.get('nome')}</p>
+                            <p class="text-gray-700 mb-4">Série: ${dados.get('turma')} | RA: ${dados.get('ra')}</p>
+                            <div class="bg-white p-4 rounded shadow-inner text-2xl font-bold text-gray-800">
+                                Sua Nota: ${nota} / ${Object.keys(gabarito).length}
+                            </div>
+                            <p class="mt-6 text-sm text-gray-500">O professor já recebeu sua prova na planilha. Você pode fechar esta aba.</p>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    telaResultado.innerHTML = `
+                        <div class="bg-red-50 border-l-4 border-red-500 p-8 rounded shadow-lg max-w-md w-full my-auto">
+                            <h1 class="text-2xl font-bold text-red-600 mb-4">Erro de Conexão</h1>
+                            <p>Ocorreu um erro ao enviar. A internet pode ter caído.</p>
+                            <p class="font-bold mt-2">Chame o professor.</p>
+                        </div>
+                    `;
+                });
+        });
+    </script>
+</body>
+</html>
